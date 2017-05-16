@@ -1,4 +1,12 @@
 import string
+alphabet = string.ascii_lowercase
 
-x = string.ascii_lowercase
-print(x)
+def pangramCheck(str):
+    for a in alphabet:
+        if a not in str:
+            return False
+    return True
+
+inputStr = input("Upiši rečenicu: ")
+
+print( pangramCheck(inputStr.lower()) )
