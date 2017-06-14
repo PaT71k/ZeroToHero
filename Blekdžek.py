@@ -10,16 +10,16 @@ class Player(object):
         self.bankroll += amount
 
 # Debug code------------------------------------------------------------------------
-sam = Player(bankroll=1000)
-print(sam.bankroll)
+# sam = Player(bankroll=1000)
+# print(sam.bankroll)
 
-sam.add_bankroll(12000)
-print(sam.bankroll)
+# sam.add_bankroll(12000)
+# print(sam.bankroll)
 # Debug end-------------------------------------------------------------------------
 
 # Cards (H hearts, D diamonds, C clubs, S spades)
-type = ['H','D','C','S']
-rank = ['A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K']
+suits = ['H', 'D', 'C', 'S']
+ranks = ['A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K']
 card_val = {'A':1, '2':2, '3':3, '4':4, '5':5, '6':6, '7':7, '8':8, '9':9, '10':10, 'J':10, 'Q':10, 'K':10}
 
 
@@ -38,8 +38,8 @@ class Card:
         return self.rank
 
 # Debug code------------------------------------------------------------------------
-Karta = Card('H',10)
-print(Karta)
+# Karta = Card('H',10)
+# print(Karta)
 # Debug end-------------------------------------------------------------------------
 
 # Hand
@@ -70,3 +70,26 @@ class Hand:
             return self.value + 10
         else:
             return self.value
+
+# Deck
+
+class Deck:
+    def __init__(self):
+        self.deck = []
+        for suit in suits:
+            for rank in ranks:
+                self.deck.append(Card(suit, rank))
+
+    def shuffle(self):
+        random.shuffle(self.deck)
+
+    def deal(self):
+        single_card = self.deck.pop()
+        return single_card
+
+    def __str__(self):
+        deck_comp = ""
+        for card in self.cards:
+            deck_comp += " " + deck_comp.__str__()
+
+        return "The deck has" + deck_comp
